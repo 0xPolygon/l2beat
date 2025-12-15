@@ -331,8 +331,8 @@ export const chains: ChainConfig[] = [
     shortName: 'katana',
     multicall: undefined,
     explorer: {
-      type: 'blockscout',
-      url: 'https://katanascan.com/api',
+      type: 'etherscan',
+      url: 'https://api.etherscan.io/v2/api?chainid=747474',
     },
     coingeckoPlatform: 'katana',
   },

@@ -669,6 +669,15 @@ async function getAllLogs(
   if (fromBlock === toBlock) {
     return await provider.getLogs(address, topics, fromBlock, toBlock)
   }
+  // batch calls if fromBlock is far away from toBlock
+  let step = 500000
+  if (fromBlock + step < toBlock) {
+    let logs: providers.Log[] = []
+    for(let i = fromBlock; i <= toBlock; i += step) {
+      logs.push(...await provider.getLogs(address, topics, i, Math.min(i + step, toBlock)))
+    }
+    return logs.sort(orderLogs)
+  }
   try {
     return await provider.getLogs(address, topics, fromBlock, toBlock)
   } catch (e) {

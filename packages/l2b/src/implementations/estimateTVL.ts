@@ -146,7 +146,10 @@ async function queryTokenBalance(
     console.log(e)
     return BigNumber.from(0)
   }
-  return decodedResult.length === 1 ? decodedResult[0] : decodedResult
+
+  // balanceOf should always return a single uint256
+  assert(decodedResult.length === 1, 'Unexpected result length from balanceOf')
+  return decodedResult[0] as BigNumber
 }
 
 const PRICE_PRECISION = 18

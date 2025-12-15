@@ -1,0 +1,37 @@
+{
+  "$schema": "../../../../../discovery/schemas/config.v2.schema.json",
+  "name": "vault-bridge",
+  "import": [
+    "../globalConfig.jsonc"
+  ],
+  "initialAddresses": [
+    "eth:0x417d01B64Ea30C4E163873f3a1f77b727c689e02",
+    "eth:0x2DC70fb75b88d2eB4715bc06E1595E6D97c34DFF",
+    "eth:0x53E82ABbb12638F09d9e624578ccB666217a765e",
+    "eth:0x6d4f9f9f8f0155509ecd6Ac6c544fF27999845CC",
+    "eth:0x2C24B57e2CCd1f273045Af6A5f632504C432374F",
+    "eth:0x3DD459dE96F9C28e3a343b831cbDC2B93c8C4855",
+    "katana:0xEE7D8BCFb72bC1880D0Cf19822eB0A2e6577aB62",
+    "katana:0x203A662b0BD271A6ed5a60EdFbd04bFce608FD36",
+    "katana:0x62D6A123E8D19d06d68cf0d2294F9A3A0362c6b3",
+    "katana:0x2DCa96907fde857dd3D816880A0df407eeB2D2F2",
+    "katana:0x0913DA6Da4b42f538B445599b46Bb4622342Cf52"
+  ],
+  "names": {
+    "eth:0x53E82ABbb12638F09d9e624578ccB666217a765e": "vbUSDC",
+    "eth:0x6d4f9f9f8f0155509ecd6Ac6c544fF27999845CC": "vbUSDT",
+    "eth:0x2C24B57e2CCd1f273045Af6A5f632504C432374F": "vbWBTC",
+    "eth:0x3DD459dE96F9C28e3a343b831cbDC2B93c8C4855": "vbUSDS",
+    "eth:0x2a3DD3EB832aF982ec71669E178424b10Dca2EDe": "LxLyBridge",
+    "katana:0xEE7D8BCFb72bC1880D0Cf19822eB0A2e6577aB62": "Vault Bridge ETH Token",
+    "katana:0x203A662b0BD271A6ed5a60EdFbd04bFce608FD36": "Vault Bridge USDC Token",
+    "katana:0x62D6A123E8D19d06d68cf0d2294F9A3A0362c6b3": "Vault Bridge USDS Token",
+    "katana:0x2DCa96907fde857dd3D816880A0df407eeB2D2F2": "Vault Bridge USDT Token",
+    "katana:0x0913DA6Da4b42f538B445599b46Bb4622342Cf52": "Vault Bridge WBTC Token",
+  },
+  "overrides": {
+    "eth:0x2a3DD3EB832aF982ec71669E178424b10Dca2EDe": {
+      "ignoreDiscovery": true
+    }
+  }
+}
