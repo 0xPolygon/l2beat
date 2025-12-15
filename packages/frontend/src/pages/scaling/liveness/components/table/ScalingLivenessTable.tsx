@@ -1,6 +1,7 @@
 import { getCoreRowModel, getSortedRowModel } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { BasicTable } from '~/components/table/BasicTable'
+import { ColumnsControls } from '~/components/table/controls/ColumnsControls'
 import { useTableSorting } from '~/components/table/sorting/TableSortingContext'
 import { useTable } from '~/hooks/useTable'
 import type { ScalingLivenessEntry } from '~/server/features/scaling/liveness/getScalingLivenessEntries'
@@ -11,14 +12,9 @@ import { toLivenessTableEntry } from './toTableEntry'
 interface Props {
   entries: ScalingLivenessEntry[]
   hideType?: boolean
-  bigQueryOutage: boolean
 }
 
-export function ScalingLivenessTable({
-  entries,
-  hideType,
-  bigQueryOutage,
-}: Props) {
+export function ScalingLivenessTable({ entries, hideType }: Props) {
   const { timeRange } = useLivenessTimeRangeContext()
   const { sorting, setSorting } = useTableSorting()
 
@@ -27,9 +23,11 @@ export function ScalingLivenessTable({
     [entries, timeRange],
   )
 
+  const columns = useMemo(() => getScalingLivenessColumns(hideType), [hideType])
+
   const table = useTable({
     data: tableEntries,
-    columns: getScalingLivenessColumns(hideType, bigQueryOutage),
+    columns,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     manualFiltering: true,
@@ -44,5 +42,10 @@ export function ScalingLivenessTable({
     },
   })
 
-  return <BasicTable table={table} />
+  return (
+    <>
+      <ColumnsControls columns={table.getAllColumns()} />
+      <BasicTable table={table} />
+    </>
+  )
 }

@@ -1,19 +1,14 @@
 import { getCoreRowModel, getSortedRowModel } from '@tanstack/react-table'
 import { useMemo } from 'react'
 import { BasicTable } from '~/components/table/BasicTable'
+import { ColumnsControls } from '~/components/table/controls/ColumnsControls'
 import { useTable } from '~/hooks/useTable'
 import { useLivenessTimeRangeContext } from '~/pages/scaling/liveness/components/LivenessTimeRangeContext'
 import type { DaLivenessEntry } from '~/server/features/data-availability/liveness/getDaLivenessEntries'
 import { publicColumns } from './columns'
 import { toDaLivenessTableEntry } from './toDaLivenessTableEntry'
 
-export function DaLivenessTable({
-  items,
-  bigQueryOutage,
-}: {
-  items: DaLivenessEntry[]
-  bigQueryOutage: boolean
-}) {
+export function DaLivenessTable({ items }: { items: DaLivenessEntry[] }) {
   const { timeRange } = useLivenessTimeRangeContext()
 
   const tableEntries = useMemo(
@@ -22,7 +17,7 @@ export function DaLivenessTable({
   )
 
   const table = useTable({
-    columns: publicColumns(bigQueryOutage),
+    columns: publicColumns(),
     data: tableEntries,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -34,5 +29,10 @@ export function DaLivenessTable({
     },
   })
 
-  return <BasicTable table={table} />
+  return (
+    <>
+      <ColumnsControls columns={table.getAllColumns()} />
+      <BasicTable table={table} />
+    </>
+  )
 }

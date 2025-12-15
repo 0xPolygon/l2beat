@@ -1,13 +1,13 @@
 import { HOMEPAGE_MILESTONES } from '@l2beat/config'
 import type { Request } from 'express'
 import { getAppLayoutProps } from '~/common/getAppLayoutProps'
-import { env } from '~/env'
 import type { ICache } from '~/server/cache/ICache'
 import { getScalingCostsEntries } from '~/server/features/scaling/costs/getScalingCostsEntries'
 import { getMetadata } from '~/ssr/head/getMetadata'
 import type { RenderData } from '~/ssr/types'
 import { getSsrHelpers } from '~/trpc/server'
 import type { Manifest } from '~/utils/Manifest'
+import { optionToRange } from '~/utils/range/range'
 
 export async function getScalingCostsData(
   req: Request<unknown, unknown, unknown, { tab: 'rollups' | 'others' }>,
@@ -45,7 +45,6 @@ export async function getScalingCostsData(
         ...appLayoutProps,
         ...data,
         milestones: HOMEPAGE_MILESTONES,
-        bigQueryOutage: env.CLIENT_SIDE_BIG_QUERY_OUTAGE,
       },
     },
   }
@@ -75,7 +74,7 @@ async function getQueryState(tab: 'rollups' | 'others') {
   const helpers = getSsrHelpers()
 
   await helpers.costs.chart.prefetch({
-    range: '30d',
+    range: optionToRange('30d'),
     filter: { type: tab },
   })
   return helpers.dehydrate()

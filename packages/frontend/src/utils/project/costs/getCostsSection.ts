@@ -1,7 +1,7 @@
 import type { Project } from '@l2beat/config'
 import type { CostsSectionProps } from '~/components/projects/sections/costs/CostsSection'
-import { env } from '~/env'
 import type { SsrHelpers } from '~/trpc/server'
+import { optionToRange } from '~/utils/range/range'
 import { getTrackedTransactions } from '../tracked-txs/getTrackedTransactions'
 
 export async function getCostsSection(
@@ -11,11 +11,7 @@ export async function getCostsSection(
     'costsInfo' | 'archivedAt' | 'trackedTxsConfig'
   >,
 ): Promise<
-  | Pick<
-      CostsSectionProps,
-      'trackedTransactions' | 'defaultRange' | 'bigQueryOutage'
-    >
-  | undefined
+  Pick<CostsSectionProps, 'trackedTransactions' | 'defaultRange'> | undefined
 > {
   if (!project.costsInfo) return undefined
 
@@ -23,7 +19,7 @@ export async function getCostsSection(
 
   if (!trackedTransactions) return undefined
 
-  const range = project.archivedAt ? 'max' : '1y'
+  const range = project.archivedAt ? optionToRange('max') : optionToRange('1y')
   const data = await helpers.costs.projectChart.fetch({
     range,
     projectId: project.id,
@@ -34,6 +30,5 @@ export async function getCostsSection(
   return {
     trackedTransactions,
     defaultRange: range,
-    bigQueryOutage: env.CLIENT_SIDE_BIG_QUERY_OUTAGE,
   }
 }
