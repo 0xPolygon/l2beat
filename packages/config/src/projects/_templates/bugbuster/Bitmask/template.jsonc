@@ -1,4 +1,0 @@
-{
-  "$schema": "../../../../../../discovery/schemas/contract.v2.schema.json",
-  "description": "Implementation of bit mask with dynamic array."
-}

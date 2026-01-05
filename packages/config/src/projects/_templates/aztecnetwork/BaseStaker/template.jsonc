@@ -1,5 +1,0 @@
-{
-  "$schema": "../../../../../../discovery/schemas/contract.v2.schema.json",
-  "description": "A template contract used for staker proxies within the StakingRegistry.",
-  "ignoreMethods": ["getOperator"]
-}

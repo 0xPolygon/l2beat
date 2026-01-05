@@ -1,8 +1,0 @@
-{
-  "$schema": "../../../../../../discovery/schemas/contract.v2.schema.json",
-  "name": "TaikoDAOController",
-  "description": "Middleware contract that maintains ownership of DAO-controlled assets and contracts. Its token weight does not count towards the DAO quorum.",
-  "category": "gov",
-  "ignoreMethods": ["proxiableUUID"],
-  "fields": { "owner": { "permissions": [{ "type": "act" }] } }
-}

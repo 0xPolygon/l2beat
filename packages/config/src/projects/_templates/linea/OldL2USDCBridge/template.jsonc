@@ -1,6 +1,0 @@
-{
-  "$schema": "../../../../../../discovery/schemas/contract.v2.schema.json",
-  "description": "L2 side of the old and now unused USDC bridge.",
-  "fields": { "remoteUSDCBridge": { "edit": ["format", "EthereumAddress"] } },
-  "ignoreMethods": ["usdc"]
-}
