@@ -18,11 +18,5 @@
     "previewRedeem",
     "previewWithdraw"
   ],
-  "fields": {
-    "accessControl": {
-      "handler": {
-        "type": "accessControl"
-      }
-    }
-  }
+  "fields": { "accessControl": { "handler": { "type": "accessControl" } } }
 }

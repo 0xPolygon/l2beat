@@ -1,9 +1,9 @@
-Generated with discovered.json: 0xc7e758ae58e547bbf3548ac73f475617b061a579
+Generated with discovered.json: 0x4b7c2f6682cbd75483bda9156e414d530fb1b150
 
-# Diff at Mon, 15 Dec 2025 16:22:48 GMT:
+# Diff at Mon, 15 Dec 2025 17:03:22 GMT:
 
 - author: Simon Dos (<sdosch@polygon.technology>)
-- current timestamp: 1765815656
+- current timestamp: 1765818112
 
 ## Description
 
