@@ -50,6 +50,7 @@
     "lint": "pnpm -r lint",
     "lint:fix": "pnpm -r lint:fix",
     "start": "cd packages/backend && pnpm start",
+    "sc-dashboard-start": "cd packages/l2b && pnpm l2bup && l2b ui",
     "test": "turbo run test -- --reporter progress",
     "test:exclude-backend": "turbo run test --filter=!@l2beat/backend --filter=!@l2beat/database",
     "typecheck": "turbo run typecheck",

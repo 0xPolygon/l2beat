@@ -51,6 +51,7 @@
     "@types/mock-fs": "^4.13.4",
     "@types/node-fetch": "^2.6.11",
     "@types/readline-sync": "^1.4.8",
-    "mock-fs": "^5.2.0"
+    "mock-fs": "^5.2.0",
+    "typescript": "^5.5.3"
   }
 }
